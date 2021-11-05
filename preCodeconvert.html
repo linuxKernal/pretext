@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pre code converter</title> 
+    <style>
+        #textDiv{
+            background-color: forestgreen;
+            color: white;
+        }
+        .container{
+            display: flex;
+            justify-content: space-between;
+        }
+        #output{
+            background-color: lightgreen;
+            padding: 1rem;
+            color: white;
+        }
+        #textBox{
+            border: 3px solid green;
+            padding: .2rem;
+            min-width:30vw;
+            min-height:30vh;
+        }
+        .temp{
+            display: flex;
+            align-items: flex-start;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="color: white;background-color: dodgerblue;text-transform: capitalize;text-align: center;">
+        pre code convert
+    </h1>
+    <div class="container">
+        <div class="temp">
+            <div id="textBox" contenteditable>
+                Enter your code here
+            </div>
+            
+            <button class="butn" onclick="myfunc()">
+                convert
+            </button>
+            <button class="textcopy" onclick="textcopy()">
+                copy output
+            </button>
+        </div>
+        <div id="output">
+
+        </div>
+    </div>
+    <script>
+        let textnew = "";
+        const myfunc = ()=>{
+            let text = document.getElementById('textBox').innerText;
+            let mydiv = document.getElementById('output');
+            let temp = String(text).replaceAll('<','&lt;');
+            let temp1 = temp.replaceAll('>','&gt;');
+            textnew = temp1.replaceAll('\n','\n');
+            mydiv.innerText = textnew;
+        }
+        const textcopy = ()=>{
+            navigator.clipboard.writeText(textnew).then(ok=>{
+                console.log("success");
+            })
+        }
+    </script>
+</body>
+</html>
