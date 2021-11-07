@@ -57,9 +57,10 @@
         const myfunc = ()=>{
             let text = document.getElementById('textBox').innerText;
             let mydiv = document.getElementById('output');
-            let temp = String(text).replaceAll('<','&lt;');
+            let temp = String(text).replaceAll('&','&amp;');
             let temp1 = temp.replaceAll('>','&gt;');
-            textnew = temp1.replaceAll('\n','\n');
+            let temp2 = temp1.replaceAll('<','&lt');
+            textnew = temp2.replaceAll('\n','\n');
             mydiv.innerText = textnew;
         }
         const textcopy = ()=>{
